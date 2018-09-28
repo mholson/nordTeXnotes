@@ -1,10 +1,10 @@
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 % INTERNATIONA BACCALEAREATE INTERNAL ASSESSMENT TEMPLATE
 %
-%   Name        ::  Internal Assessment Template
+%   Name        ::  ia_template.tex
 %	Author		::  Mark Olson
 %	Created		::  2017-06-05
-%	Updated		::  [[June]] 5, 2017 at 12:32:42
+%	Updated		::  2018-09-28 14:50
 %	Version		::  0.1
 %	Github		::  markolsonse
 %
@@ -45,8 +45,8 @@
 I am not suggesting that you should use headings to organize your work, but you certainly have the option do so. By default sections are enumerated; however, you can suppress the section numbers by ending the section command with an asterisk character, *.
 
 \begin{itemize}
-    \item \verb!\section{Enumerated Section}\label{sec:introduction}!
-    \item \verb!\section*{Section Title Only}!
+	\item \verb!\section{Enumerated Section}\label{sec:introduction}!
+  \item \verb!\section*{Section Title Only}!
 \end{itemize}
 
 If your sections are numbered, then you can also label them using by appending the label command,  \verb!\label{sec:introduction}!, which gives you the option to reference the section at any point in your document by using the reference command \verb!\ref{sec:introduction}!. So for example, please reference section \ref{sec:introduction} to read the introduction.
@@ -108,7 +108,30 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
   f(x) &= a\left(x^2 + \frac{b}{a}x + \frac{c}{a} \right) \lj{Left Distributive}
 \end{align}
 
+Maybe you want to display your equation as a couple of cases
+
+\begin{equation*}
+\begin{aligned}
+2x + 5 &= 0 \lj{CASE I} \\
+x &= \dfrac{- 5}{2} 
+\end{aligned}
+\qquad \qquad
+\begin{aligned}
+3x + 5 &= 0 \lj{CASE II} \\
+x &= \dfrac{- 5}{3} 
+\end{aligned}
+\qquad \qquad
+\begin{aligned}
+4x + 5 &= 0 \lj{CASE III} \\
+x &= \dfrac{- 5}{4} 
+\end{aligned}
+\end{equation*}
+
 Now time for some \textit{Lorem ipsum} dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. You really should refer to equation \ref{eqn:quadratic}.
+
+Notice no space between the paragraphs.  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\\
+
+Now we have a space between them. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 \subsection*{Images}\label{subsec:images}
 
@@ -116,7 +139,7 @@ It's very likely that you will want to include images in your paper.  I like to 
 
 \begin{figure}[ht!]
   \centering
-  \includegraphics{./0-images/20170509-123642.png}
+  \includegraphics{./images/20170509-123642.png}
   \caption{This is a TI84 ScreenShot}\label{img:ti84screenshot1}
 \end{figure}
 
@@ -125,7 +148,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 There is no need to spend any time resizing your images as this can be done by providing an option to the \verb!\includegraphics! command such as \verb![width=0.35\textwidth]!.  
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.35\textwidth]{./0-images/image.jpg}
+  \includegraphics[width=0.35\textwidth]{./images/image.jpg}
   \caption{Easily resize images}
 \end{figure}
 
@@ -136,21 +159,21 @@ If you have more than one image that you would like to group together, especiall
 \begin{figure}
     \centering
     \begin{subfigure}[b]{0.3\textwidth}
-        \includegraphics[width=\textwidth]{./0-images/20170509-123642.png}
+        \includegraphics[width=\textwidth]{./images/20170509-123642.png}
         \caption{A gull}
         \label{fig:gull}
     \end{subfigure}
     ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
       %(or a blank line to force the subfigure onto a new line)
     \begin{subfigure}[b]{0.3\textwidth}
-        \includegraphics[width=\textwidth]{./0-images/20170509-123642.png}
+        \includegraphics[width=\textwidth]{./images/20170509-123642.png}
         \caption{A tiger}
         \label{fig:tiger}
     \end{subfigure}
     ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
     %(or a blank line to force the subfigure onto a new line)
     \begin{subfigure}[b]{0.3\textwidth}
-        \includegraphics[width=\textwidth]{./0-images/20170509-123642.png}
+        \includegraphics[width=\textwidth]{./images/20170509-123642.png}
         \caption{A mouse}
         \label{fig:mouse}
     \end{subfigure}
@@ -186,6 +209,7 @@ You could create your plots using other software, but you might want to try usin
 \caption{Using pgfPlots for beautifully typeset graphs}
 \end{figure}
 
+\newpage
 
 %-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 %	YOUR IA CONTENT GOES HERE
