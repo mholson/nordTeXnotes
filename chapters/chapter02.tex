@@ -1,0 +1,41 @@
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- CHAPTER 01
+\chapter{Typesetting Mathematics}
+
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= SECTION
+\section{Inline Mathematics}
+Any mathematics that is to be typset inline with text is called 
+\defw{inline math}.  
+
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= EXAMPLE
+\begin{example}
+It is time that we solve all equations of the form \(ax^2 + bx + c = 0 \) by 
+completing the square.  
+
+There are two acceptable notations for typsetting the equation.  
+\begin{description}
+    \item[TeX] \verb! $ ax^2 + bx + c = 0 $ !
+    \item[LaTeX] \verb! \( ax^2 + bx + c = 0 \) !
+\end{description}
+
+\end{example}
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= END EXAMPLE
+
+As a beginner, it might be easier to use the \verb!$! to delineate any inline
+math.  I personally prefer using the \LaTeX\, notation.  It is probably  
+worth mentioning that all whitespace is ignored for inline math, so you 
+might want to create some style rules to keep your code consistent and 
+easy to read.  
+
+Based on the last example we could accept the following formatting rules:
+
+\begin{enumerate}
+    \item Leave a space on both sides of addition operators.
+    \item Leave a space on both sides of equal signs.
+    \item Start and end each inline math environment with a space.
+    \item No spaces between juxtaposed factors.
+\end{enumerate}
+
+These formatting rules are to make your code easier to parse and not required
+to compile your document in to pdf.  It is just so much easier to read 
+\verb!\( ax^2 + bx + c = 0 \)! than \verb!\(ax^2+bx+c=0\)!.
+
