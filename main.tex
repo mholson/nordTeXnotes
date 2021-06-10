@@ -78,6 +78,13 @@ citecolor={nordZero},
 urlcolor={nordZero},
 }
 
+% > > > Bibliography 
+\usepackage[
+    style=numeric,
+    url=true
+]{biblatex}
+\addbibresource{references.bib}
+
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 %
 % BEGIN DOCUMENT
@@ -180,17 +187,16 @@ If you have more than one image that you would like to group together, especiall
 \chapter{Introduction}
 
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%
 % BACKMATTER
 %
-% Bibliographies can be prepared with BibTeX using amsplain,
-% amsalpha, or (for author-year style) natbib.
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 \appendix
 \chapter{Appendix A}
 \backmatter
-\bibliographystyle{abbrv}
-\bibliography{references}
+
+\printbibliography
 
 %\printindex
 \end{document}
