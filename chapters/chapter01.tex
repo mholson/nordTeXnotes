@@ -4,24 +4,51 @@
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= SECTION
 \section{Purpose}
 
-This template is designed for International Baccalaureate students who
-are looking to write an extended essary or an internal assessment using \LaTeX.
-It is based on the MAA monograph AMS/MAA textbook template,
-\url{http://www.ams.org/arc/books/book-produce.html#maamono}.  Some 
-modifications have been made to the original class files and can be found
-\verb!maatext.cls! and \verb!maabook.cls! to better meet the requirements of 
-the International Baccalaureate and these modifications are maintained at 
-\url{https://github.com/mholson/mhoTexmf/tree/main/texmf}.  
+This template is designed for International Baccalaureate\texttrademark\, 
+students who are looking to write an extended essary or an internal assessment
+using \LaTeX.  It is based on the MAA monograph AMS/MAA textbook template
+\footnote{\url{http://www.ams.org/arc/books/book-produce.html}} class files 
+\verb!maatext.cls! and \verb!maabook.cls! which have been modifed to try and
+meets the formatting requirements and recommendations of the International 
+Baccalaureate\texttrademark\, These modifications and additional file 
+dependencies are maintained in github texmf repository.
+\footnote{\url{https://github.com/mholson/mhoTexmf/tree/main/texmf}}.  
 
-The original tempalte was meant to be compiled using XeLaTeX; however, this 
-template has been designed to compile with pdfLaTeX such that the 
-\verb!cmbright! font style is used throughout. \cite{Eigen1971}
+I have done my best to ensure this template meets the submission requirements; 
+however, I cannot guarentee these are current nor correct. It is the 
+responsibility to the student to ensure the work they submit is formatted 
+correctly by ensuring they are following the official documentation and
+following the advice of their teacher.\cite{Olson2021}
 
-I cannot guarentee that this template meets the submission requirements for
-any piece of written work.  It is the responsibility of the student to 
-ensure their work meets the specifications set forth by the examination board 
-or their teacher.\cite{Olson2021}
+\begin{align*}
+    ax^2 + bx + c &= 0 \\
+    \cos^2 x + \sin^2 x &= 0 \\
+    \ln x + \dfrac{2x^2}{y} &= \rfrac{3}{x}
+\end{align*}
+
+While there is extensive online support and documentation for \LaTeX\,, it 
+can still be overwhelming to a beginner.  I do hope the following information 
+and examples will give students a sufficient knowledge base from which they 
+can beging writing and extend their skills. 
 
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= SECTION
+\section{Requirements}
 
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= SECTION
+\section{Getting Started}
 
+One of the benfits of writing in \LaTeX\, is the ability to write comments
+that are not typeset.  Any text following a \lstinline{%} character will be 
+ignored.  Not only is this ideal for leaving comments and ideas, but it is 
+als a way to make temporary changes to your document.
+\lstset{style=mhotexcode}
+\begin{lstlisting}[belowskip=-2 \baselineskip]
+% This code will be ignored
+This text will be visible % while this text will be ignored.
+\end{lstlisting}
+Much of your document will be filled with commands that take the form 
+. In fact the first non-comment l
+ine of your document will be the command that defines the document template.
+\begin{lstlisting}
+\documentclass[a4paper]{maatext}
+\end{lstlisting}
