@@ -13,16 +13,22 @@
 % Created: 2021-06-09
 %
 % This template is designed for International Baccalaureate students who
-% are looking to write an extended essary or internal assessment using LaTeX.
-% It is based on the MAA monograph AMS/MAA textbook template
-% (http://www.ams.org/arc/books/book-produce.html#maamono). Some modifications
-% have been made to the original class file (maabook.cls) and included in the 
-% file (mhotext.cls).  I have done my best to ensure this template
-% meet the requirements as stipulated by the International Baccalaureate.  It is
-% the responsibility of the student to check the official International 
-% Baccalaureate documentation to ensure their work meets all the specifications
-% and requirements of any work submitted and have it checked by their
-% supervising teacher.
+% are looking to write an extended essary or an internal assessment using LaTeX.
+% The template is based on KOMA Script scrbook class and further modifed using
+% the custom (mhotext.sty) style file, which was inspired by the code of Napkin
+% http://web.evanchen.cc/napkin.html written by Evan Chan.
+%
+% It is important to know that this template can only be compiled under XeLaTeX
+% or LuaLaTeX as it is making use of OTF Libertinus fonts
+% via the (libertinus-otf) package being called by the mhotext.sty file.
+%
+% While I have done my best to ensure this template meets the requirements as
+% stipulated by the International Baccalaureate, it is the responsibility
+% of the student to check the official International Baccalaureate documentation
+% to ensure their work meets all the specifications and requirements of any work
+% submitted.  The student should also have the style of their work checked by
+% their supervising teacher before submitting their final draft to the IB for
+% grading.
 %=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 
 
@@ -36,194 +42,113 @@
 %
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
-% >>> DOCUMENT SETUP
-\documentclass[a4paper, openany]{mhotext}
+\documentclass[fontsize=12pt,twoside=semi,openright,numbers=noenddot,parskip=half]{scrbook}
+
+% > > > srchack is necessary for some packages to play nicely with KomaScript scrbook
+\usepackage{scrhack}
+
+% > > > scrbook customizations - this is where the magic happens
+\usepackage{mhotext}
+
+% > > > Uncomment to view labels in right margin (might need to deprecate later)
+%\usepackage[inner, right]{showlabels}
+
+% > > > The IB suggests that internal assessment be written with double line
+% > > > spacing.  In order to enable an alternative line spacing, you
+% > > > can make use of the setspace package.  The line after \begin{document}
+% > > > is where you can set your spacing to meet the needs of the submission
+% > > > requirements.
+%\usepackage{setspace}
 
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-% PREAMBLE
+% SETUP THE TITLE PAGE
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+% > > > Enter the title of the essary
+\title{Qn Infinitely Large Napkin}
 
-% > > > Formatting
-\usepackage{subcaption}
-\usepackage{parskip}
-\usepackage{booktabs}
+% > > > Enter the the research question here
+\subtitle{What would be a good research question to write here?}
 
-% > > > Graphics:
-\usepackage{tikz}
-%\usepackage{pgfplots}
+% > > > Enter your name on the draft version ONLY.  When compiling your final
+% > > > draft, then change the argument of author to your subject area.
+%\author{Mark Olson}
+\author{Mathematics}
 
-% > > > Code Highlighting
-\usepackage{mhocodestyle}
-
-% > > > Mathematics:
-\usepackage{mhomath}
-\usepackage{mhotheoremsTEST}
-
-% > > > Numbering of sections and equations:
-\numberwithin{section}{chapter}
-\numberwithin{equation}{chapter}
-
-% > > > Index: by default it is suppressed.
-%\makeindex
-%\makeindex[columns=2, title=Alphabetical Index, intoc]
-
-\usepackage{hyperref}
-\hypersetup{
-colorlinks=true,
-% You might want to disable color links for you final draft.
-%colorlinks=false,
-linkcolor={nordZero},
-citecolor={nordZero},
-urlcolor={nordZero},
-}
-
-% > > > Bibliography 
-\usepackage[
-    backend=biber,
-    style=numeric,
-    citestyle=numeric,
-    url=true
-]{biblatex}
-\addbibresource{references.bib}
+% > > > It was just easier to replace the date with the word count. This is
+% > > > not necessary for the internal assessment, but is required for the
+% > > > extended essay.
+\date{Words: 1234}
 
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-%
-% BEGIN DOCUMENT
-%
+% DOCUMENT BEGINS HERE
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-
 \begin{document}
+
+% > > > If you are making use of the setspace package for line spacing then
+% > > > you can choose one of the following options or refer to the setspace
+% > > > documentation.
+%\doublespacing%
+%\onehalfspacing%
 
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 % FRONTMATTER
+%
+% By default the extended essay and internal assessment do not require any
+% frontmatter content.  It is here if you want/need it.
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
-% > > > Choose your category
-\subcategory{Extended Essay}
-%\subcategory{Internal Assessment}
-
-% > > > Choose your subject
-\subsubject{mathematics}
-
-% > > > Document title
-\title{Your Title Goes Here}
-
-% > > > Use the the subtitle to enter your research question
-\subtitle{Your research question should go here.}
-
-% > > > You will need to comment out the author in your final draft
-\author{Temporary Name}
-
-% > > > manually enter the word count
-\wordcount{1234}
+%\frontmatter
+%\renewcommand{\thepage}{\arabic{page}}
 
 \maketitle
 
-\cleardoublepage
+% > > > You can include non-chapter frontmatter content here.
+%\include{chapters/frontmatter/preface}
 
-%\setcounter{page}{1}
-\tableofcontents
+% > > > Leaving some blank pages.
+\cleardoublepage%
 
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 % MAINMATTER
-%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-\mainmatter
-
-%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-% CHAPTERS
-%  
-% Alternatively, you could write all your code below.  However, it might be
-% easier to work with your project by breaking it up into chapters or 
-% sections.  
-%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-
-% > > > Listing of Chapters to Include
-\include{chapters/chapter01}
-\include{chapters/chapter02}
-\include{chapters/chapter03}
-
-%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 %
+% This is where your content will go.  It is probably best to break your
+% document up into chapters to make it easier to both navigate and resolve
+% errors in your code.
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+\mainmatter%
+
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= TOC
+\tableofcontents%
+
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- PART
+% > > > Your document probably does not need to be broken up into parts as
+% > > > chapters should be more than sufficient to organize your work.
+%\part{Not Necessary But Available}
+
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- CHAPTERS
+% > > > Template Information
+\include{chapters/chapter01}
+% > > > Text Elements
+\include{chapters/chapter02}
+% > > > Math Elements
+\include{chapters/chapter03}
+% > > > Figure & Image Elements
+\include{chapters/chapter04}
+
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 % BACKMATTER
 %
+% Here you will include your reference section and possibly appendicies if you
+% feel that you need them.
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
-\appendix
-\chapter{Appendix A}
-\backmatter
+\backmatter%
 
-\printbibliography
-
-%\printindex
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= REFERENCES
+\clearpage
+\printbibliography[title={References}]
 \end{document}
-%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-%
-% END DOCUMENT
-%
-%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-
-%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-%
-% GENERAL DOCUMENT STYLE GUIDE
-%
-% * Text should not exceed 80 characters per line to keep parsing of tex 
-%   files quick.
-% * 
-%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-
-%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-% DOCUMENT STRUCTURE
-%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-\part{}
-\chapter{}
-\section{}
-% \subsection{}
-
-\begin{enumerate} 
-  \item something 
-\end{enumerate}
-
-
-%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-% FIGURES AND GRAPHICS
-%
-% * Figure insertion; default placement is top; if the figure occupies
-%   more than 75% of a page, the [p] option should be specified.
-%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-
-\begin{figure}
-% \includegraphics{filename}
-\caption{text of caption}
-\label{}
-\end{figure}
-
-%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-% MATH SPECIFIC
-%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-
-% > > > Numbered equation
-\begin{equation}
-\end{equation}
-
-% > > > Unnumbered equation
-\begin{equation*}
-\end{equation*}
-
-% > > >  Aligned equations
-\begin{align}
-  &  \\
-  &
-\end{align}
-
-% > > >  Theorem and proof environments
-\begin{theorem}[Optional addition to theorem head]
-% text of theorem
-\end{theorem}
-
-\begin{proof}[Optional replacement proof heading]
-% text of proof 
-
-\end{proof}
 
 %=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 % END OF FILE
