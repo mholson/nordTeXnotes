@@ -1,41 +1,146 @@
 % =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= Chapter 02
 \chapter{Typesetting Mathematics}
 
-%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= SECTION
+One of the main advantages of using \LaTeX\,is that it is relatively easy to
+include mathematical statements into your documents.  In order for the code
+that you write to be interpreted by the compiler as mathematics, you need
+to escape from \defw{normal mode} into \defw{math mode} by using the
+\verb!\(! delimiter, enter the code you wish to express as a mathematical
+statement, then exit from \defw{math mode} back into \defw{normal mode} by
+using the \verb!\)! delimiter. This \defw{math mode} is more specifically
+known as inline mathematics.
+
+% =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= SECTION
 \section{Inline Mathematics}
-Any mathematics that is to be typset inline with text is called 
-\defw{inline math}.  
 
-%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= EXAMPLE
-\begin{example}
-It is time that we solve all equations of the form \(ax^2 + bx + c = 0 \) by 
-completing the square.  
+Part of the steep learning curve associated with \LaTeX\,is getting to know the
+math mode syntax.  We are going to start with an inline math example that
+includes how to express a power, the command for is an element of the set and
+how to format sets names using blackboard bold.
 
-There are two acceptable notations for typsetting the equation.  
-\begin{description}
-    \item[TeX] \verb! $ ax^2 + bx + c = 0 $ !
-    \item[LaTeX] \verb! \( ax^2 + bx + c = 0 \) !
-\end{description}
+\begin{mhotexbox}
+Solve all equations of the form \( ax^2 + bx + c = 0 \) for
+\( x \in \mathbb{R} \) by completing the square.
+\end{mhotexbox}
 
-\end{example}
-%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= END EXAMPLE
-
-As a beginner, it might be easier to use the \verb!$! to delineate any inline
-math.  I personally prefer using the \LaTeX\, notation.  It is probably  
-worth mentioning that all whitespace is ignored for inline math, so you 
-might want to create some style rules to keep your code consistent and 
-easy to read.  
-
-Based on the last example we could accept the following formatting rules:
-
+Spaces in \textbf{math mode} are ignored by the compiler, which means we can
+be somewhat generous with space in our code to make it easier to parse.  I
+generally like to leave space on both sides of:
 \begin{enumerate}
-    \item Leave a space on both sides of addition operators.
-    \item Leave a space on both sides of equal signs.
-    \item Start and end each inline math environment with a space.
-    \item No spaces between juxtaposed factors.
+\item explicit infix binary operators such as \( +, - , \times, \div \);
+%\item binary relations such as \( = , \leq, \geq, \divides, >, < \);
+  \item latex commands like \verb!\in, \mathbb{R}! and
+  \item math mode toggle commands \verb!\(! and \verb!\)!.
 \end{enumerate}
+It is not required that you leave these spaces, but consider how cramped the
+code looks without any spaces.
+\begin{mhotexbox}
+Solve all equations of the form \(ax^2+bx+c=0\) for
+\(x\in\mathbb{R}\) by completing the square.
+\end{mhotexbox}
+As your expressions become more complex, the additional spaces in your code
+should improve the legibility of your code.  Well, at least that has been my
+experience. If you are new to \LaTeX\,, then you might want to use the
+plain \TeX\,\verb!$! delimiters to toggle between \textbf{normal mode} and
+\textbf{math mode}.  The advantage is that it is easier to read the code, but
+can make finding errors more difficult to locate later on.  You can always
+do a search replace to go from \verb!\( \)! to \verb!$$!, but the converse
+is not possible.
+\begin{mhotexbox}
+Solve all equations of the form $ ax^2 + bx + c = 0 $ for $ x \in \mathbb{R} $
+by completing the square.
+\end{mhotexbox}
+It is now time to introduce \defw{display style math mode}.
 
-These formatting rules are to make your code easier to parse and not required
-to compile your document in to pdf.  It is just so much easier to read 
-\verb!\( ax^2 + bx + c = 0 \)! than \verb!\(ax^2+bx+c=0\)!.
+% =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= SECTION
+\section{Display Style Math Mode}
 
+There will be times when you will want to emphasise or isolate an expression
+by centering it on the page and for this we are going to be using 
+\defw{display style math mode}.  If your expression is only one line then
+we can use the \verb!\[ foo \]! delimiters, which can formatted such that
+each delimiter gets its own line and the expression is given on the line 
+between them.  You will most likely come across the plain \TeX\,double
+dollar sign, \verb!$$ foo $$!, delimiters and unlike the single dollar sign
+as delimiters in inline mode, these are \textbf{NOT TO BE USED} to toggle
+display style math mode.
+
+\begin{mhotexbox}
+All the real number values of \( x \) that satisfy the quadratic equations
+of the form \( ax^2 + bx + c = 0 \) where \( a, b, c \in \mathbb{R} \) 
+can be found using the quadratic formula,
+\[
+  x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}.
+\]
+\end{mhotexbox}
+
+If you are looking to include multiple lines in display math mode, then
+you have a few environment options available.  You should not use 
+consecutive display math mode delimiters.  The following is to be avoided.
+
+\begin{mhotexbox}
+  \[ 
+    2x^2 + 14x + 24 = 2( x^2 + 7x + 12 )
+  \]
+  \[ 
+    = 2(x + 3)(x + 3) 
+  \].
+\end{mhotexbox}
+
+There are many different environments for doing mutliple line expressions
+in \defw{display math mode}. I use the \texttt{align} environment for
+about 95 \% of my mutliple line expressions needed and is dependent upon 
+the amsmath package.  I really like how I can format my code such that 
+each expression of the equation \textbf{can} be given its own line, 
+which is very useful for finding errors and viewing long lines of code.
+In the upcomming example you will see that I use the \verb!&! to align
+each of the multiple lines with the \verb!=! sign and use \verb!\\!
+for an equation line break.
+
+\begin{mhotexbox}
+Changing the form of the expression \( 2x^2 + 14x + 24 \) in inline math 
+mode, could write \( 2x^2 + 14x + 24 = 2( x^2 + 7x + 12 ) = 2(x + 3)(x + 3) \).  
+However, this might be easier for the reader if it was expressed in 
+display math mode using the align environment,
+\begin{align}
+  2x^2 + 14x + 24 
+  &= 2( x^2 + 7x + 12 ) \label{eqn:importantInfo}\\
+  &= 2(x + 3)(x + 3)  \label{eqn:finalAnswer}
+\end{align}
+Expression \ref{eqn:finalAnswer} is my final answer.
+\end{mhotexbox}
+You probably noticed that each line of this environment was assigned a 
+number. If you want to be able to reference a line from the environemnt 
+you can provide it with a label and then reference it as 
+expression \ref{eqn:importantInfo}.
+
+It might be the case that you do not want to reference or number each 
+expression in an align environment.  In this case, you can use the 
+can append a star to the environment name to suppress the numbering.
+
+\begin{mhotexbox}
+  Given \( x = \cos x \) and \( y = \sin x \), we can show
+  \begin{align*}
+    x^2 + y^2 &= 1 \\
+    \left( \cos x \right)^2 + \left( \sin x \right)^2 &= 1 \\
+    \cos^2 x + \sin^2 &= 1.
+  \end{align*}
+\end{mhotexbox}
+
+It is also possible to provide text between each line of your 
+environment without having to use a new environment each time 
+you want to move back to display style math mode.  This is 
+the \verb!intertext! command.  If you want less space between
+each line then you can use the \verb!shortintertext! command.
+
+\begin{mhotexbox}
+  Given \( x = \cos x \) and \( y = \sin x \), we can show
+  \begin{align*}
+    \shortintertext{using the Pythagorean identity}
+    x^2 + y^2 &= 1 \\
+    \intertext{substituting \(x \) and \(y \)}
+    \left( \cos x \right)^2 + \left( \sin x \right)^2 &= 1 \\
+    \shortintertext{alternative function squared form}
+    \cos^2 x + \sin^2 &= 1.
+  \end{align*}
+\end{mhotexbox}
