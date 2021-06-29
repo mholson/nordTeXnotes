@@ -13,8 +13,8 @@
 % Created: 2021-06-09
 %
 % This template is designed for International Baccalaureate students who
-% are looking to write an extended essary or an internal assessment using LaTeX.
-% The template is based on KOMA Script scrbook class and further modifed using
+% are looking to write an extended essay or an internal assessment using LaTeX.
+% The template is based on KOMA Script scrbook class and further modified using
 % the custom (mhotext.sty) style file, which was inspired by the code of Napkin
 % http://web.evanchen.cc/napkin.html written by Evan Chan.
 %
@@ -37,9 +37,8 @@
 % SETUP :: main.tex 
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 %
-% Templates for text, math and figure elements are can be found at the end
-% of this document ... below the \end{document} line.
-%
+% > > > Templates for text, math and figure elements are can be found at the end
+%       of this document ... below the \end{document} line.
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 \documentclass[fontsize=12pt,twoside=semi,openright,numbers=noenddot,parskip=half]{scrbook}
@@ -50,33 +49,39 @@
 % > > > scrbook customizations - this is where the magic happens
 \usepackage{mhotext}
 
+% > > > If you are going to be referencing multiple images from the same path
+%       then it might be a good idea to set the path of where the images are
+%       located, so that you do not need to manually include it each time.
+% % Load image paths
+\graphicspath{{\string~/GitHub/mhoIBTeX/assets/}}
+
 % > > > Uncomment to view labels in right margin (might need to deprecate later)
 %\usepackage[inner, right]{showlabels}
 
 % > > > The IB suggests that internal assessment be written with double line
-% > > > spacing.  In order to enable an alternative line spacing, you
-% > > > can make use of the setspace package.  The line after \begin{document}
-% > > > is where you can set your spacing to meet the needs of the submission
-% > > > requirements.
+%       spacing.  In order to enable an alternative line spacing, you
+%       can make use of the setspace package.  The line after \begin{document}
+%       is where you can set your spacing to meet the needs of the submission
+%       requirements.
 %\usepackage{setspace}
 
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 % SETUP THE TITLE PAGE
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-% > > > Enter the title of the essary
+% > > > Enter the title of the essay
 \title{Qn Infinitely Large Napkin}
 
 % > > > Enter the the research question here
 \subtitle{What would be a good research question to write here?}
 
 % > > > Enter your name on the draft version ONLY.  When compiling your final
-% > > > draft, then change the argument of author to your subject area.
+%       draft, then change the argument of author to your subject area.
 %\author{Mark Olson}
-\author{Mathematics}
 
+\author{Mathematics}
 % > > > It was just easier to replace the date with the word count. This is
-% > > > not necessary for the internal assessment, but is required for the
-% > > > extended essay.
+%       not necessary for the internal assessment, but is required for the
+%       extended essay.
 \date{Words: 1234}
 
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -85,16 +90,16 @@
 \begin{document}
 
 % > > > If you are making use of the setspace package for line spacing then
-% > > > you can choose one of the following options or refer to the setspace
-% > > > documentation.
+%       you can choose one of the following options or refer to the setspace
+%       documentation.
 %\doublespacing%
 %\onehalfspacing%
 
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 % FRONTMATTER
 %
-% By default the extended essay and internal assessment do not require any
-% frontmatter content.  It is here if you want/need it.
+% > > > By default the extended essay and internal assessment do not require any
+%       frontmatter content.  It is here if you want/need it.
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 %\frontmatter
@@ -111,9 +116,9 @@
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 % MAINMATTER
 %
-% This is where your content will go.  It is probably best to break your
-% document up into chapters to make it easier to both navigate and resolve
-% errors in your code.
+% > > > This is where your content will go.  It is probably best to break your
+%       document up into chapters to make it easier to both navigate and resolve
+%       errors in your code.
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 \mainmatter%
@@ -123,24 +128,27 @@
 
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- PART
 % > > > Your document probably does not need to be broken up into parts as
-% > > > chapters should be more than sufficient to organize your work.
+%       chapters should be more than sufficient to organize your work.
 %\part{Not Necessary But Available}
 
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- CHAPTERS
+% > > > Here you have a choice to write you entire paper organized either
+%       by chapter or by section.  However, if you do decide to use chapters,
+%       then I would recommend using a separate file to organize your work.
+%       I have included some demonstration chapters to help you.
+
 % > > > Template Information
-\include{chapters/chapter01}
+%\include{chapters/chapter01}
 % > > > Text Elements
 \include{chapters/chapter02}
-% > > > Math Elements
-\include{chapters/chapter03}
 % > > > Figure & Image Elements
-\include{chapters/chapter04}
+%\include{chapters/chapter03}
 
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 % BACKMATTER
 %
-% Here you will include your reference section and possibly appendicies if you
-% feel that you need them.
+% > > > Here you will include your reference section and possibly appendices if you
+%       feel that you need them.
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 \backmatter%
@@ -152,4 +160,4 @@
 
 %=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 % END OF FILE
-%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+% =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
