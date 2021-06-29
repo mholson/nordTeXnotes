@@ -140,17 +140,21 @@ The Overleaf\texttrademark version will come with batteries included in the
 \section{Getting Started}
 
 One of the benfits of writing in \LaTeX\, is the ability to write comments
-that are not typeset.  Any text following a \lstinline{%} character will be 
+that are not typeset.  Any text following a \verb!%! character will be 
 ignored.  Not only is this ideal for leaving comments and ideas, but it is 
 als a way to make temporary changes to your document.
-\lstset{style=mhotexcode}
-\begin{lstlisting}[belowskip=-2 \baselineskip]
+\begin{mhotexbox}
 % This code will be ignored
 This text will be visible % while this text will be ignored.
-\end{lstlisting}
+\end{mhotexbox}
 Much of your document will be filled with commands that take the form 
 . In fact the first non-comment l
 ine of your document will be the command that defines the document template.
-\begin{lstlisting}
+\begin{mhotexbox}
 \documentclass[a4paper]{maatext}
-\end{lstlisting}
+
+\begin{align*}
+    4x + 3y &= 9
+\end{align*}
+\end{mhotexbox}
+more text here
