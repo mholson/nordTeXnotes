@@ -118,10 +118,25 @@ Most of you will never need to look in this folder; however, I thought I would
 provide a short summary of what files are included and how they are being used
 to format your document.
 
-%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= SECTION
+% =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= SECTION
 \section{Requirements}
 
-%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= SECTION
+All the file dependencies outside the scope of a typical \TeX\, distribution
+are available from my \texttt{texmf} repository hosted on
+Github\footnote{\url{https://github.com/mholson/mhoTexmf/tree/main/texmf}}.
+The Overleaf\texttrademark version will come with batteries included in the 
+\texttt{texmf} directory, which in include.  
+\begin{description}
+    \item[\texttt{maabook.cls}] the main template file.
+    \item[\texttt{mhotext.cls}] customizations made the to main template file.
+    \item[\texttt{mhotheorems.sty}] styling custom theorem environements
+    \item[\texttt{mhocolorthemenord}] custom color theme based on Nord Theme.
+    \item[\texttt{mhocodestyle.sty}] styling code via the listings package.
+    \item[\texttt{mhomath.sty}] some of my custom math commands.  
+\end{description}
+
+
+% =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= SECTION
 \section{Getting Started}
 
 One of the benfits of writing in \LaTeX\, is the ability to write comments
