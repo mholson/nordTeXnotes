@@ -1,139 +1,286 @@
 % =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= Chapter 02
 \chapter{Typesetting Mathematics}
 
-One of the main advantages of using \LaTeX\,is that it is relatively easy to
-include mathematical statements into your documents.  In order for the code
-that you write to be interpreted by the compiler as mathematics, you need
-to escape from \defw{normal mode} into \defw{math mode} by using the
-\verb!\(! delimiter, enter the code you wish to express as a mathematical
-statement, then exit from \defw{math mode} back into \defw{normal mode} by
-using the \verb!\)! delimiter. This \defw{math mode} is more specifically
-known as inline mathematics.
+This chapter will focus on inserting mathematics into your paper. \LaTeX ~comes 
+with basic mathematics support out of the box, so we will need to 
+incorporate some additional packages to enhance the range of formulas that can 
+be included in our document.  You can think of it as adding the functionality 
+of an equation editor into your current word processor. As you become more 
+familiar with the syntax, you will quickly appreciate being able to type
+your formulas with the same ease you write text.
+
+\LaTeX ~comes with two modes that are of interest to us: 
+\begin{enumerate}
+  \item normal and
+  \item math, which has the two styles
+  \begin{enumerate}
+    \item inline and
+    \item display.
+  \end{enumerate}
+\end{enumerate}
+Normal mode is the default mode and where you will write the non-mathematical text
+of your document.  If you want to include expressions and equations,
+then you are going to need to use either an inline or display math mode, 
+which are environments specific for mathematics.  However, we are going to
+want to include more advanced mathematical formatting such as multiline 
+equations and for this we are going to include some additional packages
+including those from the \AmS, American Mathematics Society, and the mathtools\cite{CTANmathtools}
+packages which will bring some enhancements to the \AmS ~math package\cite{CTANamsmath}.  Don't worry,
+these packages are loaded by default when using this style file; however, 
+you should be aware which packages are being used so that you know which 
+documentation to reference for help beyond this quick start up guide.
+
+To get us started, I am going to briefly introduce both the inline and 
+display math environments that are available.  Then I will provide some of the 
+more common features available from the \AmS ~math package.  Once we have 
+established the environments in which we can write mathematics, we can look
+at how we can format special characters  and symbols such as operators, 
+operands and function names.  To make our lives a bit easier, we will include
+some additional packages along the way and I will share some of the custom
+macros that are available through the mhomath.sty file.
+
 
 % =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= SECTION
 \section{Inline Mathematics}
+ In order for the code
+that you write to be interpreted by the compiler as mathematics, you need
+to toggle between \defw{normal mode} and \defw{inline math mode} by using the
+math environment.
+\begin{docEnvironment*}[doclang/environment content=mathematics content goes here]{math}{}{}
+\begin{dispExample}
+Solve all equations of the form 
+\begin{math} 
+  ax^2 + bx + c = 0 
+\end{math}
+for 
+\begin{math} 
+  x \in \mathbb{R} 
+\end{math} 
+by completing the square.
+\end{dispExample}
 
-Part of the steep learning curve associated with \LaTeX\,is getting to know the
-math mode syntax.  We are going to start with an inline math example that
-includes how to express a power, the command for is an element of the set and
-how to format sets names using blackboard bold.
-
-\begin{mhotexbox}
-Solve all equations of the form \( ax^2 + bx + c = 0 \) for
-\( x \in \mathbb{R} \) by completing the square.
-\end{mhotexbox}
-
-Spaces in \textbf{math mode} are ignored by the compiler, which means we can
-be somewhat generous with space in our code to make it easier to parse.  I
-generally like to leave space on both sides of:
-\begin{enumerate}
-\item explicit infix binary operators such as \( +, - , \times, \div \);
-%\item binary relations such as \( = , \leq, \geq, \divides, >, < \);
-  \item latex commands like \verb!\in, \mathbb{R}! and
-  \item math mode toggle commands \verb!\(! and \verb!\)!.
-\end{enumerate}
-It is not required that you leave these spaces, but consider how cramped the
-code looks without any spaces.
-\begin{mhotexbox}
+From the above example, we can see that the code is verbose and difficult to
+read.  Thankfully, this environment has a shortcut notation that should 
+\textbf{ALWAYS} be used.  The macro \cs{(} is used to toggle into inline math mode 
+and the macro \cs{)} is used to toggle back to normal mode. 
+\begin{dispListing}
+< normal mode text > \( < math environment code > \) < normal mode text > 
+\end{dispListing}
+We can now revisit our original example using this simplified notation.
+\begin{dispExample}
+Solve all equations of the form \( ax^2 + bx + c = 0 \) 
+for \( x \in \mathbb{R} \) by completing the square.
+\end{dispExample}
+It is helpful to know that spaces in math mode are ignored by the 
+compiler, which means we can be generous with how we use spaces to format
+our code such that it is easier to parse. As your expressions become more 
+complex, the additional spaces in your code should improve its legibility.  
+Well, at least that has been my experience.  Let's consider our
+example without the extra spaces.
+\begin{dispExample}
 Solve all equations of the form \(ax^2+bx+c=0\) for
 \(x\in\mathbb{R}\) by completing the square.
-\end{mhotexbox}
-As your expressions become more complex, the additional spaces in your code
-should improve the legibility of your code.  Well, at least that has been my
-experience. If you are new to \LaTeX\,, then you might want to use the
-plain \TeX\,\verb!$! delimiters to toggle between \textbf{normal mode} and
-\textbf{math mode}.  The advantage is that it is easier to read the code, but
-can make finding errors more difficult to locate later on.  You can always
-do a search replace to go from \verb!\( \)! to \verb!$$!, but the converse
-is not possible.
-\begin{mhotexbox}
-Solve all equations of the form $ ax^2 + bx + c = 0 $ for $ x \in \mathbb{R} $
-by completing the square.
-\end{mhotexbox}
-It is now time to introduce \defw{display style math mode}.
+\end{dispExample}
+The shortcut inline math environment, \cs{(}\meta{math environment code}\cs{)}, that we 
+have been using is from \LaTeX.  However, there is a plain \TeX\,shortcut
+for the math environment that remains popular today which is using the dollar
+sign character as the delimiter.
+\begin{dispListing}
+< normal mode text > $ < math environment code > $ < normal mode text > 
+\end{dispListing}
+I prefer the \cs{(} \meta{math environment code} \cs{)} notation as it can be helpful
+in resolving errors.  However, if you are new to using \LaTeX\,, then you might
+want to use the dollar sign delimiters as they have the advantage of making 
+your code slightly easier to read and faster to type.  At this point in the 
+development of \LaTeX\, as a language, it is really a matter of personal 
+preference.  Just be consistent!
+\begin{dispExample}
+Solve all equations of the form $ ax^2 + bx + c = 0 $ for 
+$ x \in \mathbb{R} $ by completing the square.
+\end{dispExample}
+A small thought on changing between the two different shortcut notations. It 
+would be possible to do a quick search and replace from the \LaTeX\, notation to 
+the \TeX\, notation, but not vice-versa. 
+\end{docEnvironment*}
 
 % =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= SECTION
 \section{Display Style Math Mode}
 
-There will be times when you will want to emphasise or isolate an expression
-by centering it on the page and for this we are going to be using 
-\defw{display style math mode}.  If your expression is only one line then
-we can use the \verb!\[ foo \]! delimiters, which can formatted such that
-each delimiter gets its own line and the expression is given on the line 
-between them.  You will most likely come across the plain \TeX\,double
-dollar sign, \verb!$$ foo $$!, delimiters and unlike the single dollar sign
-as delimiters in inline mode, these are \textbf{NOT TO BE USED} to toggle
-display style math mode.
+There will be times when you will want to emphasize or isolate an expression
+by centering it on the page and for this we are going to be using the 
+\defw{display style math mode} environment. This environment is restricted to 
+a single line of output like an equation.
 
-\begin{mhotexbox}
+\begin{docEnvironment*}[doclang/environment content=mathematics content goes here]{displaymath}{}{}
+\begin{dispExample}
 All the real number values of \( x \) that satisfy the quadratic equations
 of the form \( ax^2 + bx + c = 0 \) where \( a, b, c \in \mathbb{R} \) 
 can be found using the quadratic formula,
+\begin{displaymath}
+  x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}.
+\end{displaymath}
+\end{dispExample}
+Just like the inline math environment, you would \textbf{ALWAYS} use the 
+\LaTeX\,pair of \cs{[} \meta{math environment code} \cs{]} delimiters as the 
+shortcut. Rather than write the delimiters and mathematical expression on the same 
+line as we did in inline math mode, we give each delimiter it's own line 
+and place the math on the line in between the delimiters. We could express the
+quadratic formula from our previous examples as:
+\begin{dispExample}
 \[
   x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}.
 \]
-\end{mhotexbox}
-
+\end{dispExample}
+It is very likely that you will come across the the double dollar sign 
+shortcut notation for the display math environment, but it should 
+\textbf{NEVER} be used as it will most likely bring up issues at some point. 
+\begin{dispExample}
+$$
+  x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}.
+$$
+\end{dispExample} 
 If you are looking to include multiple lines in display math mode, then
-you have a few environment options available.  You should not use 
-consecutive display math mode delimiters.  The following is to be avoided.
-
-\begin{mhotexbox}
+you might be tempted to use consecutive display style math mode 
+environments, but you must resist as a better solution is available.
+In summary, you should \textbf{NEVER} use consecutive display math mode 
+environments, which means you should never write something like:
+\begin{dispExample}
   \[ 
     2x^2 + 14x + 24 = 2( x^2 + 7x + 12 )
   \]
   \[ 
     = 2(x + 3)(x + 3) 
   \].
-\end{mhotexbox}
+\end{dispExample}
+\end{docEnvironment*}
 
-There are many different environments for doing mutliple line expressions
-in \defw{display math mode}. I use the \texttt{align} environment for
-about 95 \% of my mutliple line expressions needed and is dependent upon 
-the amsmath package.  I really like how I can format my code such that 
-each expression of the equation \textbf{can} be given its own line, 
-which is very useful for finding errors and viewing long lines of code.
-In the upcomming example you will see that I use the \verb!&! to align
-each of the multiple lines with the \verb!=! sign and use \verb!\\!
-for an equation line break.
+% =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= SECTION
+\section{Multiline Math Environments}
 
-\begin{mhotexbox}
-Changing the form of the expression \( 2x^2 + 14x + 24 \) in inline math 
-mode, could write \( 2x^2 + 14x + 24 = 2( x^2 + 7x + 12 ) = 2(x + 3)(x + 3) \).  
-However, this might be easier for the reader if it was expressed in 
-display math mode using the align environment,
-\begin{align}
-  2x^2 + 14x + 24 
-  &= 2( x^2 + 7x + 12 ) \label{eqn:importantInfo}\\
-  &= 2(x + 3)(x + 3)  \label{eqn:finalAnswer}
-\end{align}
-Expression \ref{eqn:finalAnswer} is my final answer.
-\end{mhotexbox}
-You probably noticed that each line of this environment was assigned a 
-number. If you want to be able to reference a line from the environemnt 
-you can provide it with a label and then reference it as 
-expression \ref{eqn:importantInfo}.
+Like I said, there are specific environments that you can use to achieve multiline 
+equations. This style file includes the package mathtools, which will give us 
+multiple environments to achieve multiline equations and more.  The mathtools package
+imports the \AmS ~math package and enhances its functionality.  This means if we are
+using mathtools, then there is no need to import \AmS ~math.
 
-It might be the case that you do not want to reference or number each 
-expression in an align environment.  In this case, you can use the 
-can append a star to the environment name to suppress the numbering.
+For complete documentation I suggest you check the official documentation:
+\begin{itemize}
+  \item User’s Guide for the amsmath Package
+  \item The mathtools package
+\end{itemize}
 
-\begin{mhotexbox}
-  Given \( x = \cos x \) and \( y = \sin x \), we can show
+Before we look at the using multiline equation environments, I want to point out
+the single line math environment called equation, which is similar to the \LaTeX 
+~display math environment 
+ 
+\begin{docEnvironment*}[doclang/environment content=mathematics content goes here]{equation}{}{}
+  The first environment that we are going to consider is very similar to the the \LaTeX ~display 
+  math environment, but it also supports multiline equations.  By default the equations will 
+  be numbered.
+  \begin{dispExample}
+    \begin{equation}
+      x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}.
+    \end{equation}
+    \end{dispExample}
+\end{docEnvironment*}
+In fact, we get something very close to the \LaTeX ~display math environment with 
+the star version of this equation environment as the equation numbers are suppressed.
+All these structured math environments have a star version that suppresses numbering,
+so I will only include an example for the equation environment.
+\begin{docEnvironment*}[doclang/environment content=mathematics content goes here]{equation*}{}{}
+  \begin{dispExample}
+    \begin{equation*}
+      x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}.
+    \end{equation*}
+    \end{dispExample}
+  \end{docEnvironment*}
+It's time to take a look at some of the multiline equation environments that are available
+for us to use in our work. To change the form of the expression \( 2x^2 + 14x + 24 \) using 
+the equation environment. 
+\begin{dispExample}
+  \begin{equation*}
+    2x^2 + 14x + 24 = 2( x^2 + 7x + 12 ) = 2(x + 3)(x + 3)
+    \end{equation*}
+  \end{dispExample}
+
+However, this might be easier to read if it was expressed using a multiline math environment.
+
+It is possible include a split environment within the equation environment to achieve a
+multiline equation with the option to include expression splitting as well.
+\begin{docEnvironment*}[doclang/environment content=mathematics content goes here]{split}{}{}
+  We will use the \verb!&! character to vertically \textit{align} each equation
+  at the equal sign and two consecutive double backslash characters, \verb!\\! 
+  break to the next line.
+  \begin{dispExample}
+    \begin{equation*}
+      \begin{split}
+        2x^2 + 14x + 24 
+        &= 2( x^2 + 7x + 12 ) \\
+        &= 2(x + 3)(x + 3) 
+      \end{split}
+    \end{equation*}
+    \end{dispExample}
+    It is even possible to split up long expressions!  The \cs{quad} macro is 
+    used to include 4 spaces.
+    \begin{dispExample}
+      \begin{equation*}
+        \begin{split}
+          a
+          &= b - c + d - e + f \\
+          & \quad - g + h - i + k \\
+          &= l + m \\
+          &= n 
+        \end{split}
+      \end{equation*}
+      \end{dispExample}
+\end{docEnvironment*}
+It might be the case that you have one very long expression that you would like 
+to break up and this can be done with the multline environment.  Notice that 
+this does not require to be embedded in the equation environment.
+\begin{docEnvironment*}[doclang/environment content=mathematics content goes here]{multiline}{}{}
+  \begin{dispExample}
+    \begin{multline*}
+        a + b + c + d + e + f + g + h + i + j + k + l + m + n + o + p + q + r + s + t + u + v + w + x + y + z \\
+        - (a + b + c + d + e + f + g + h + i + j + k + l + m + n + o + p + q + r + s + t + u + v + w + x + y + z ) 
+    \end{multline*}
+    \end{dispExample}
+\end{docEnvironment*}
+My preference is to have my equations to be vertically aligned at the equal sign.
+However, you might want your equations to be centered on the page.  The gather 
+environment will take care of this for you.
+\begin{docEnvironment*}[doclang/environment content=mathematics content goes here]{gather}{}{}
+  \begin{dispExample}
+    \begin{gather*}
+        a = b + c + d + e \\
+        a = f + g \\
+        a = h
+    \end{gather*}
+    \end{dispExample}
+  Notice that there is not \verb!&! character being used for alignment in this environment.
+\end{docEnvironment*}
+It is now time to introduce the environment that I use for about 95 \% of the 
+multiple line expressions needed in my work and it is called align.  
+\begin{docEnvironment*}[doclang/environment content=mathematics content goes here]{align*}{}{}
+\begin{dispExample}
   \begin{align*}
-    x^2 + y^2 &= 1 \\
-    \left( \cos x \right)^2 + \left( \sin x \right)^2 &= 1 \\
-    \cos^2 x + \sin^2 &= 1.
+    2x^2 + 14x + 24 
+    &= 2( x^2 + 7x + 12 ) \\
+    &= 2(x + 3)(x + 3). 
   \end{align*}
-\end{mhotexbox}
-
-It is also possible to provide text between each line of your 
-environment without having to use a new environment each time 
-you want to move back to display style math mode.  This is 
-the \verb!intertext! command.  If you want less space between
-each line then you can use the \verb!shortintertext! command.
-
-\begin{mhotexbox}
+\end{dispExample}
+This environment allows you to comment you work using tags
+\begin{dispExample}
+  \begin{align*}
+    2x^2 + 14x + 24 
+    &= 2( x^2 + 7x + 12 ) \tag{factoring two}\\
+    &= 2(x + 3)(x + 3). \tag{factoring the quadratic}
+  \end{align*}
+\end{dispExample}
+There is no need for multiple align environments in a 
+sentence since there is the \cs{intertext} macro.  If 
+you want less space between the lines, then I can
+suggest that you use the \cs{shortintertext} macro instead.
+\begin{dispExample}
   Given \( x = \cos x \) and \( y = \sin x \), we can show
   \begin{align*}
     \shortintertext{using the Pythagorean identity}
@@ -143,4 +290,64 @@ each line then you can use the \verb!shortintertext! command.
     \shortintertext{alternative function squared form}
     \cos^2 x + \sin^2 &= 1.
   \end{align*}
-\end{mhotexbox}
+\end{dispExample}
+It is also possible to include two columns of equations
+  \begin{dispExample}
+  \begin{align*}
+    a_{11}
+    & =b_{11}
+    &
+    a_{12}
+    & =b_{12}\\
+    a_{21}
+    & =b_{21}
+    &
+    a_{22}
+    & =b_{22}+c_{22}
+\end{align*}
+\end{dispExample}
+\end{docEnvironment*}
+If you would like the columns to be fully justified, then 
+there is an alternative environment called flalign.
+\begin{docEnvironment*}[doclang/environment content=mathematics content goes here]{flalign*}{}{}
+\begin{dispExample}
+\begin{flalign*}
+    a_{11}
+    & =b_{11}
+    &
+    a_{12}
+    & =b_{12}\\
+    a_{21}
+    & =b_{21}
+    &
+    a_{22}
+    & =b_{22}+c_{22}
+\end{flalign*}
+\end{dispExample}
+\end{docEnvironment*}
+
+% =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= SECTION
+\section{Cases Environment}
+
+There are a couple cases where you might want to treat some part of your
+formula as a block on the same line and the cases environment get the job done.
+\begin{docEnvironment*}[doclang/environment content=mathematics content goes here]{cases}{}{}
+\begin{dispExample}
+\[
+\abs{x}=\begin{cases}
+  x & \text{ if \( x \ge 0 \) } \\
+  -x & \text{ if \( x < 0 \) }
+\end{cases}
+\]
+\end{dispExample}
+This can also be used for systems of equations.
+\begin{dispExample}
+Solve the following system of equations for \( x \) and \( y \).
+  \[
+  \begin{cases}
+    x + y = 12 \\
+    2x - 3y = 9
+  \end{cases}
+  \]
+  \end{dispExample}
+\end{docEnvironment*}
