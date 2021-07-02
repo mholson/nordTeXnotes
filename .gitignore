@@ -242,3 +242,5 @@ TSWLatexianTemp*
 *.spl
 .DS_Store
 *.listing
+*.json
+*.tcbtemp
