@@ -96,21 +96,7 @@ your template project.  So let's start looking at the code.
 For us the file is going to start of with multiple lines of text that are going
 to be ignored by the compiler, which means it will not be included in our pdf
 output.
-% =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- DEFINITION
-\begin{definition}[Code Comment]
-  Any code that is written in your file that is ignored by the compiler is
-  called \defw{commented text}.  All characters on the same line following
-  a \verb!%! symbol will be regarded as commented text and ignored.
-\end{definition}
 
-Comments are great for including information or comments for anyone reading
-your code --- including yourself!
-\begin{mhotexbox}
-% This line would be ignored by the compiler.
-This line is read by the compiler
-
-The compiler is reading % now it is ignoring.
-\end{mhotexbox}
 % =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= SECTION
 \section{texmf - The Template Files}
 
@@ -138,23 +124,39 @@ The Overleaf\texttrademark version will come with batteries included in the
 
 % =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= SECTION
 \section{Getting Started}
+% =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- DEFINITION
+\begin{definition}[Code Comment]
+  Any code that is written in your file that is ignored by the compiler is
+  called \defw{commented text}.  All characters on the same line following
+  a \verb!%! symbol will be regarded as commented text and ignored.
+\end{definition}
 
+Comments are great for including additional information, making temporary 
+changes to your document (without having to erase) and documenting your
+code for others to follow --- including yourself!
+
+\begin{dispExample}
+% This line would be ignored by the compiler.
+This line is read by the compiler.
+
+The compiler is reading % and now it is ignoring.
+\end{dispExample}
 One of the benefits of writing in \LaTeX\, is the ability to write comments
 that are not typeset.  Any text following a \verb!%! character will be 
 ignored.  Not only is this ideal for leaving comments and ideas, but it is 
 als a way to make temporary changes to your document.
+
+
+
 \begin{mhotexbox}
 % This code will be ignored
 This text will be visible % while this text will be ignored.
 \end{mhotexbox}
 Much of your document will be filled with commands that take the form 
-. In fact the first non-comment l
-ine of your document will be the command that defines the document template.
-\begin{mhotexbox}
+. In fact the first non-comment line of your document will be the command 
+that defines the document template.
+\begin{dispListing}
 \documentclass[a4paper]{maatext}
 
-\begin{align*}
-    4x + 3y &= 9
-\end{align*}
-\end{mhotexbox}
+\end{dispListing}
 more text here
