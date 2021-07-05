@@ -1,5 +1,5 @@
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= CHAPTER 01
-\chapter{Introduction to mhotext}
+\chapter{Introduction to IB\TeX}
 
 % =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= SECTION
 \section{Purpose}
@@ -58,6 +58,31 @@ of files and folders.
 
 % =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= SECTION
 \section{Project Structure}
+\begin{figure}[h]
+
+\dirtree{%
+.1 \cnordOne{\faWarehouse} ~Project.
+.2 \cnordThree{\faFileCode} ~main.tex.
+.2 \cnordFifteen{\faFileCode} ~references.tex.
+.2 \cnordEleven{\faFilePdf} ~main.pdf.
+.2 \cnordTen{\faFolder} ~assets.
+.3 \cnordTen{\faFolder} ~img.
+.4 \cnordSeven{\faFileImage} ~exampleImage001.jpg.
+.4 \cnordSeven{\faFileImage} ~exampleImage002.jpg.
+.4 \cnordEleven{\faFilePdf} ~exampleImage003.pdf.
+.2 \cnordTen{\faFolder} ~texmf.
+.3 \cnordFourteen{\faFileCode} ~mhotext.sty.
+.3 \cnordFourteen{\faFileCode} ~mhocolorthemenord.sty.
+.3 \cnordFourteen{\faFileCode} ~mhomath.sty.
+.3 \cnordFourteen{\faFileCode} ~mhocodestyle.sty.
+.3 \cnordFourteen{\faFileCode} ~mhotheorems.sty.
+.2 \cnordTen{\faFolder} ~chapters.
+.3 \cnordThree{\faFileCode} ~chapter01.tex.
+.3 \cnordThree{\faFileCode} ~chapter02.tex.
+.3 \cnordThree{\faFileCode} ~chapter02.tex.
+}
+\caption{Project file structure.}
+\end{figure}
 Our project is going to be made up of three folders and one main file called
 \texttt{main.tex}. Let's describe the contents of those three folders.
 \begin{description}
