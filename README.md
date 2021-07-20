@@ -10,5 +10,5 @@
 
 
 <p align="center">
-    <img src="assets/doctitle.jpg" width="20%" alt="Background" /><img src="assets/doctoc.jpg" width="20%" alt="Background" /> <img src="assets/docchapter.jpg" width="20%" alt="Background" /> <img src="assets/docimages.jpg" width="20%" alt="Background" /> <img src="assets/docenvironments.jpg" width="20%" alt="Background" /><img src="assets/docreferences.jpg" width="20%" alt="Background" />
+    <img src="assets/doctitle.jpg" width="20%" alt="Background" /><img src="assets/doctoc.jpg" width="20%" alt="Background" /> <img src="assets/docchapter.jpg" width="20%" alt="Background" /> <img src="assets/docimages.jpg" width="20%" alt="Background" /> <img src="assets/docthemenvironments.jpg" width="20%" alt="Background" /><img src="assets/docreferences.jpg" width="20%" alt="Background" />
 </p>
