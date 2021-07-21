@@ -1,0 +1,157 @@
+%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+%             _             _
+%            | |           | |
+%  _ __ ___  | |__    ___  | | ___   ___   _ __       ___   ___   _ __ ___
+% | '_ ` _ \ | '_ \  / _ \ | |/ __| / _ \ | '_ \     / __| / _ \ | '_ ` _ \
+% | | | | | || | | || (_) || |\__ \| (_) || | | | _ | (__ | (_) || | | | | |
+% |_| |_| |_||_| |_| \___/ |_||___/ \___/ |_| |_|(_) \___| \___/ |_| |_| |_|
+%
+% Author: Mark H. Olson
+% Website: https://mholson.com
+% Github: https://github.com/mholson
+%
+% File: mhomath.sty
+% Created: 2017-01-18
+% Updated: 2021-06-29
+%
+% This template is designed for the typesetting of my LaTeX notes in the form 
+% of a book and based on KOMA Script scrbook and further modifed using
+% the custom (mhotext.sty) style file, which was inspired by the code of Napkin
+% http://web.evanchen.cc/napkin.html written by Evan Chan.
+% In addition, it can be used for International Baccalaureate students who
+% are looking to write an extended essary or an internal assessment using LaTeX.
+%
+% It is important to know that this template can only be compiled under XeLaTeX
+% or LuaLaTeX as it is making use of OTF Libertinus fonts
+% via the (libertinus-otf) package being called by the mhotext.sty file.
+%
+% While I have done my best to ensure this template meets the requirements as
+% stipulated by the International Baccalaureate, it is the responsibility
+% of the student to check the official International Baccalaureate documentation
+% to ensure their work meets all the specifications and requirements of any work
+% submitted.  The student should also have the style of their work checked by
+% their supervising teacher before submitting their final draft to the IB for
+% grading.
+%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{mhotext}
+
+\RequirePackage{graphicx}
+
+\RequirePackage{xcolor}
+
+\RequirePackage{tikz}
+
+\RequirePackage{mhocolorthemenord}
+
+\RequirePackage{amssymb}
+
+\RequirePackage{mhomath}
+
+\RequirePackage[unicode]{hyperref}
+\hypersetup{
+colorlinks=true,
+% You might want to disable color links for you final draft.
+%colorlinks=false,
+linkcolor={nordZero},
+citecolor={nordZero},
+urlcolor={nordZero},
+}
+
+\RequirePackage{tcolorbox}
+\tcbuselibrary{most, documentation}
+
+% > > > Load Packages
+\RequirePackage{listings}
+
+\RequirePackage{mhocodestyle}
+\RequirePackage{mhotheorems}
+
+\RequirePackage{tocbasic}
+
+% > > > Fonts
+\RequirePackage{microtype}
+\RequirePackage{textcomp}
+\RequirePackage[warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math}
+\RequirePackage{libertinus-otf}
+
+
+% > > > Formatting
+\RequirePackage{subcaption}
+\RequirePackage{booktabs}
+
+\RequirePackage{enumerate}
+
+\RequirePackage{multirow}
+
+\RequirePackage{cleveref}
+
+\RequirePackage[english=british]{csquotes}
+
+\addtokomafont{title}{\color{nordZero}}
+\addtokomafont{subtitle}{\mdseries\itshape \color{nordOne}}
+\addtokomafont{author}{\color{nordTwo}}
+\addtokomafont{date}{\color{nordTwo}}
+
+%%fakesection Page layout
+\RequirePackage[headsepline]{scrlayer-scrpage}
+\renewcommand{\headfont}{}
+\addtolength{\textheight}{3.14cm}
+\setlength{\footskip}{0.5in}
+\setlength{\headsep}{10pt}
+
+\def\shortdate{\leavevmode\hbox{\the\year-\twodigits\month-\twodigits\day}}
+\def\twodigits#1{\ifnum#1<10 0\fi\the#1}
+\automark[chapter]{chapter}
+
+\rohead{\footnotesize \cnordThree{\thepage}}
+\rehead{\footnotesize \sffamily \cnordThree{\S \, \thesection}}
+\lehead{\footnotesize \cnordThree{\thepage}}
+\lohead{\footnotesize \leftmark}
+\chead{}
+\rofoot{}
+\refoot{}
+\lefoot{}
+\lofoot{}
+\cfoot{\pagemark}
+
+%%fakesection Fancy section and chapter heads
+\renewcommand*{\sectionformat}{\color{nordOne}\S\thesection\autodot\enskip}
+\renewcommand*{\subsectionformat}{\color{nordOne}\S\thesubsection\autodot\enskip}
+\renewcommand{\thesubsection}{\thesection.\roman{subsection}}
+%
+\addtokomafont{chapterprefix}{\raggedleft}
+\RedeclareSectionCommand[beforeskip=0.5em]{chapter}
+\renewcommand*{\chapterformat}{%
+\mbox{\scalebox{1.5}{\chapappifchapterprefix{\nobreakspace}}%
+\scalebox{2.718}{\color{nordOne}\thechapter\autodot}\enskip}}
+%
+\addtokomafont{partprefix}{\rmfamily}
+\renewcommand*{\partformat}{\color{nordOne}\scalebox{2.5}{\thepart}}
+
+%%fakesection Table of contents
+% First add ToC to ToC
+\makeatletter
+\RequirePackage{etoolbox}
+\pretocmd{\tableofcontents}{%
+  \if@openright\cleardoublepage\else\clearpage\fi
+  \pdfbookmark[0]{\contentsname}{toc}%
+}{}{}%
+\makeatother
+\setcounter{tocdepth}{1}
+
+
+
+
+%%fakesection Bibliography
+\RequirePackage[backend=biber,style=numeric]{biblatex}
+\addbibresource{references.bib}
+%\addbibresource{images.bib}
+
+%\doparttoc[n]
+
+\endinput
+%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+% End of file `mhotext.sty'.
+%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+
