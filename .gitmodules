@@ -1,0 +1,3 @@
+[submodule "dotFiles"]
+	path = dotFiles
+	url = https://github.com/mholson/dotFiles.git
