@@ -31,8 +31,6 @@
 % grading.
 %=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 
-
-
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 % PREAMBLE :: main.tex
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -60,7 +58,6 @@
 
 % > > > Uncomment to show directory structures as shown in the documentation
 \usepackage{dirtree}
-
 % > > > The IB suggests that internal assessment be written with double line
 %       spacing.  In order to enable an alternative line spacing, you
 %       can make use of the setspace package.  The line after \begin{document}
@@ -86,7 +83,6 @@
 %       not necessary for the internal assessment, but is required for the
 %       extended essay.
 \date{Words: 1234}
-
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 % DOCUMENT BEGINS HERE
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -139,7 +135,6 @@
 %       by chapter or by section.  However, if you do decide to use chapters,
 %       then I would recommend using a separate file to organize your work.
 %       I have included some demonstration chapters to help you.
-
 % > > > Template Information
 \include{chapters/chapter01}
 % > > > Mathematics
@@ -147,9 +142,11 @@
 % > > > Figure & Image Elements
 \include{chapters/chapter03}
 % > > > Theorem Environments
-\include{chapters/chapter04}
+%\include{chapters/chapter04}
 % > > > Works Cited
 %\include{chapters/chapter05}
+% > > > What is LaTeX
+%\include{chapters/chapter06}
 
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 % BACKMATTER
@@ -159,12 +156,11 @@
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 \backmatter%
-
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= REFERENCES
 \clearpage
+\addbibresource{references.bib}
 \printbibliography[title={References}]
 \end{document}
-
 %=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 % END OF FILE
 % =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
