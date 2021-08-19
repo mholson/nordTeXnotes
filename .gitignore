@@ -244,3 +244,7 @@ TSWLatexianTemp*
 *.listing
 *.json
 *.tcbtemp
+
+_region_.tex
+_region_.pdf
+chapters/__latexindent_temp.tex
