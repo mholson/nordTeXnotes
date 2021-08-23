@@ -1,6 +1,3 @@
-[submodule "dotFiles"]
-	path = dotFiles
-	url = https://github.com/mholson/dotFiles.git
 [submodule "texmf"]
 	path = texmf
 	url = https://github.com/mholson/texmf
