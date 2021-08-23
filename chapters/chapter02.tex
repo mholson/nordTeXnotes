@@ -1,15 +1,14 @@
 % =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= Chapter 02
 \chapter{Typesetting Mathematics}
 
-This chapter will focus on inserting mathematics into your paper. \LaTeX ~comes 
+This chapter will focus on inserting mathematics into your paper. \LaTeX\ comes 
 with basic mathematics support out of the box, so we will need to 
 incorporate some additional packages to enhance the range of formulas that can 
 be included in our document.  You can think of it as adding the functionality 
 of an equation editor into your current word processor. As you become more 
 familiar with the syntax, you will quickly appreciate being able to type
 your formulas with the same ease you write text.
-
-\LaTeX ~comes with two modes that are of interest to us: 
+\LaTeX\ comes with two modes that are of interest to us:
 \begin{enumerate}
   \item normal and
   \item math, which has the two styles
@@ -25,20 +24,19 @@ which are environments specific for mathematics.  However, we are going to
 want to include more advanced mathematical formatting such as multiline 
 equations and for this we are going to include some additional packages
 including those from the \AmS, American Mathematics Society, and the mathtools\cite{CTANmathtools}
-packages which will bring some enhancements to the \AmS ~math package\cite{CTANamsmath}.  Don't worry,
+packages which will bring some enhancements to the \AmS\ math package\cite{CTANamsmath}.  Don't worry,
 these packages are loaded by default when using this style file; however, 
 you should be aware which packages are being used so that you know which 
 documentation to reference for help beyond this quick start up guide.
 
 To get us started, I am going to briefly introduce both the inline and 
 display math environments that are available.  Then I will provide some of the 
-more common features available from the \AmS ~math package.  Once we have 
+more common features available from the \AmS math package.  Once we have 
 established the environments in which we can write mathematics, we can look
 at how we can format special characters  and symbols such as operators, 
 operands and function names.  To make our lives a bit easier, we will include
 some additional packages along the way and I will share some of the custom
 macros that are available through the mhomath.sty file.
-
 
 % =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= SECTION
 \section{Inline Mathematics}
@@ -58,7 +56,6 @@ for
 \end{math} 
 by completing the square.
 \end{dispExample}
-
 From the above example, we can see that the code is verbose and difficult to
 read.  Thankfully, this environment has a shortcut notation that should 
 \textbf{ALWAYS} be used.  The macro \cs{(} is used to toggle into inline math mode 
@@ -82,7 +79,7 @@ Solve all equations of the form \(ax^2+bx+c=0\) for
 \(x\in\mathbb{R}\) by completing the square.
 \end{dispExample}
 The shortcut inline math environment, \cs{(}\meta{math environment code}\cs{)}, that we 
-have been using is from \LaTeX.  However, there is a plain \TeX\,shortcut
+have been using is from \LaTeX.  However, there is a plain \TeX\ , shortcut
 for the math environment that remains popular today which is using the dollar
 sign character as the delimiter.
 \begin{dispListing}
@@ -160,8 +157,8 @@ environments, which means you should never write something like:
 Like I said, there are specific environments that you can use to achieve multiline 
 equations. This style file includes the package mathtools, which will give us 
 multiple environments to achieve multiline equations and more.  The mathtools package
-imports the \AmS ~math package and enhances its functionality.  This means if we are
-using mathtools, then there is no need to import \AmS ~math.
+imports the \AmS\ math package and enhances its functionality.  This means if we are
+using mathtools, then there is no need to import \AmS\ math.
 
 For complete documentation I suggest you check the official documentation:
 \begin{itemize}
@@ -235,7 +232,7 @@ multiline equation with the option to include expression splitting as well.
       \end{dispExample}
 \end{docEnvironment*}
 It might be the case that you have one very long expression that you would like 
-to break up and this can be done with the multline environment.  Notice that 
+to break up and this can be done with the multiline environment.  Notice that 
 this does not require to be embedded in the equation environment.
 \begin{docEnvironment*}[doclang/environment content=mathematics content goes here]{multiline}{}{}
   \begin{dispExample}
@@ -351,3 +348,8 @@ Solve the following system of equations for \( x \) and \( y \).
   \]
   \end{dispExample}
 \end{docEnvironment*}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../main"
+%%% End:
