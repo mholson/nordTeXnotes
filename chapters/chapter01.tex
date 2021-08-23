@@ -4,61 +4,95 @@
 % =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= SECTION
 \section{Purpose}
 
-This template is designed for International Baccalaureate\texttrademark\, 
+This template is designed for International Baccalaureate\texttrademark\ 
 students who are looking to write an extended essay or an internal assessment 
-using \LaTeX.  The template is based on the KOMA Script scrbook class and styled
-using the custom style file 
-\texttt{mhotext.sty}\footnote{\url{https://github.com/mholson/mhoDotFiles/texmf/}}, 
-which was inspired by Evan Chan's code
-used create Napkin\footnote{\url{http://web.evanchen.cc/napkin.html}}.
+that is formatted using \LaTeX.  The template is based on the \KOMAScript\ scrbook
+class and further customized using a number of custom style files, including  
+\texttt{mhotext.sty}\footnote{\url{https://github.com/mholson/mhoDotFiles/texmf/}}
+that is inspired by the code Evan Chan used create 
+Napkin\footnote{\url{http://web.evanchen.cc/napkin.html}}. 
 
 While I have done my best to ensure this template meets the submission
 requirement of the IB, I cannot guarantee your document will meet the 
 these standards.  It is the responsibility of the student to ensure that any 
-work submitted is formatted correctly by ensuring they are following the 
-official IB documentation and the advice giving by their supervising teacher.
+work submitted to the IB for grading is formatted correctly by ensuring they 
+are following the official IB documentation and the advice giving by their 
+supervising teacher.
 
-While there is extensive online support and documentation on how to write
-a document using \LaTeX\,, it can still be overwhelming for anyone who is just
-getting started.  I have been using \TeX\, since 2005 and I am still
-learning!  Part of this documentation will be used to provide you with
-enough knowledge to get you up and writing as quickly as possible.
+While there is extensive online support and documentation on how to publish 
+using the \LaTeX\ programming language, it can still be overwhelming for anyone
+who is getting started.  I have been navigating the \TeX\ ecosystem since 2005
+and still learning.  I want to share some of the knowledge and ideas that I have
+accumulated along the way, so that you can get writing
+as quickly as possible.  You should be focused on writing an amazing 
+manuscript and then put this template take care of the typesetting for you.
 
+Before going any further, I feel that it is important that we establish that this 
+documentation is written for high school students with little to no prior \TeX\ 
+knowledge. While you should be able to typeset your document without an 
+understanding of that \TeX\ is, how it works and a concise overview
+of \TeX\ is and how it has developed over the past 40\textsuperscript{+} years,
+I would recommend that you jump to chapter 06 before going any further
+If you are not quite sure what the difference is between \LaTeX\ and \TeX , 
+then I would highly recommend that you jump to chapter 06 for concise overview
+of \TeX\ is and how it has developed over the past 40\textsuperscript{+} years.
+While it is not imperative that you have an understanding of how \TeX\ has 
+evolved, it does bring some useful context to how it works today.  
+ 
 
 % =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= SECTION
-\section{Where to Begin?}
+\section{What is \LaTeX?}
 
-Since \TeX\, is a programming language we are going to need a text editor
+
+so let's try to distill things down the necessities with a 
+little historical context to guide us.  The 
+programming language \TeX\ was created by Donal Knuth in the late
+1970s to automate the process of formatting text ready for publication, 
+a process called typesetting.  It worked by the user creating a \texttt{foo.tex} 
+text file formatted with commands collectively called plain\TeX. This file would 
+then be interpreted by a computer program called the \TeX\ engine, which would 
+output a device independent file, \texttt{foo.dvi}, that could be sent to printer or 
+converted to another file format such as \texttt{foo.ps} or \texttt{foo.pdf}.
+
+However, in the 1980s Knuth strategically decided to that no new features would
+be added to the \TeX engine as Knuth valued the benefits of an engine that
+could produce the same output over new features being added. This has held true
+up to today with the exception of one last feature being added in 1989 resulting
+in \TeX3 \cite{GuideManyFlavours}.  With each bug fix update to \TeX3 the version number 
+converges to \( \pi \) and in 2021 it reached version 3.14159265\textbf{3}\cite{CTANPackageLshort}.
+
+Since \TeX\ is a programming language we are going to need a text editor
 to write our code and a compiler to transform that code into a pdf document.
-To keep things simple, we are going to be using an online service called 
-Overleaf\footnote{\url{https://overleaf.com}}, which will provide us with a 
-modern text editor and a range of compilers that we can use all within the 
-comfort of our favorite web browser.
+To keep things simple, I would highly recommend using  
+Overleaf\footnote{\url{https://overleaf.com}}, which will provide you with  
+both a modern text editor and a range of compilers that can all be used from
+the comfort of your favorite web browser.  If you want to compile your code
+on your own machine, then you will need to learn how to do that elsewhere.
 
-Now, rather than think of our document as one file that we edit, such as a
-MS Word or Google document, we are going to think of it as an object called a
-project which will be made up files and folders. For us, there is going to be
-one main file called \texttt{main.tex} that will make use of other files
-within the project to build a pdf of your extended essay or internal assessment.
+Before you start coding, I would highly recommend that you spend some time
+reading The Not So Short Introduction to \LaTeXe\ \cite{CTANPackageLshort}. 
+Maybe start with at least the first two chapters just to give you some history
+and context to \TeX.  Keep a link to this documentation close by as it 
+makes for a great reference manual.
 
-% =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= EXAMPLE
-\begin{example}
-  Rather than drag an image into MS Word document, we will now
-  upload the image to our project and insert it into our pdf document using
-  a line of code.
-\end{example}
+This document has been written so that you should be able to get into the 
+weeds if you feel the need, but more importantly ensure that you can get 
+writing almost immediately.  So now for a very generalized overview of \TeX.
 
-It doesn't stop there!  All the template files necessary to format your document
-will also exist in your project.  Don't worry, these files will be tucked away
-in a folder called \texttt{texmf}.
+You are probably familiar with the idea of writing your document all in one 
+file using a word processor like MS Word or Google Documents. A shift in mindset
+will be needed as your document will be now be an object called a project made 
+up of multiple files and folders. 
 
-We are starting to get a little far ahead of ourselves here.  All that really
-matters at this point is that we have an object called a project that is made up
-of files and folders.
+\section{The Big Idea}
 
-% =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= SECTION
+Basically, we are going to input code stored in a \texttt{main.tex} file into
+a compiler that will generate an output file.  The code read by the compiler is 
+written in using rhe written using the \TeX\ 
+programming language, 
+
 \section{Project Structure}
-\begin{figure}[h]
+\begin{figure}[ht]
 
 \dirtree{%
 .1 \cnordOne{\faWarehouse} ~Project.
@@ -81,8 +115,36 @@ of files and folders.
 .3 \cnordThree{\faFileCode} ~chapter02.tex.
 .3 \cnordThree{\faFileCode} ~chapter02.tex.
 }
-\caption{Project file structure.}
+\caption{Example of a project file structure.}
 \end{figure}
+
+
+% =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= EXAMPLE
+\begin{example}{Including an image.}
+  When inserting an image into a MS Word document, you would insert the image 
+  and it would become part of the document and you would no longer see that
+  image file associated with your document.  
+  
+  When inserting an image into a \LaTeX ~document, we upload a copy of the 
+  image into our project and then insert a line of code that will place that
+  image into our document.
+\end{example}
+
+While the number of files can grow when writing a \LaTeX ~document, there are 
+some pretty awesome advantages such as only having to modify or update an 
+image file and the changes will be visible in your document following the 
+next compilation of your code.
+
+I am starting to get ahead of myself here. Let's 
+
+It doesn't stop there!  All the template files necessary to format your document
+will also exist in your project.  Don't worry, these files will be tucked away
+in a folder called \texttt{texmf}.
+
+
+
+% =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= SECTION
+
 Our project is going to be made up of three folders and one main file called
 \texttt{main.tex}. Let's describe the contents of those three folders.
 \begin{description}
